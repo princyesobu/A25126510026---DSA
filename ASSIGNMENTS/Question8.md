@@ -25,6 +25,50 @@ struct node* insert(struct node *root, int x)
     return root;
 }
 
+struct node* minNode(struct node *root)
+{
+    while(root->left != NULL)
+        root = root->left;
+
+    return root;
+}
+
+struct node* deleteNode(struct node *root, int key)
+{
+    struct node *temp;
+
+    if(root == NULL)
+        return root;
+
+    if(key < root->data)
+        root->left = deleteNode(root->left, key);
+
+    else if(key > root->data)
+        root->right = deleteNode(root->right, key);
+
+    else
+    {
+        if(root->left == NULL)
+        {
+            temp = root->right;
+            free(root);
+            return temp;
+        }
+        else if(root->right == NULL)
+        {
+            temp = root->left;
+            free(root);
+            return temp;
+        }
+
+        temp = minNode(root->right);
+        root->data = temp->data;
+        root->right = deleteNode(root->right, temp->data);
+    }
+
+    return root;
+}
+
 void inorder(struct node *root)
 {
     if(root != NULL)
@@ -35,44 +79,10 @@ void inorder(struct node *root)
     }
 }
 
-void preorder(struct node *root)
-{
-    if(root != NULL)
-    {
-        printf("%d ", root->data);
-        preorder(root->left);
-        preorder(root->right);
-    }
-}
-
-void postorder(struct node *root)
-{
-    if(root != NULL)
-    {
-        postorder(root->left);
-        postorder(root->right);
-        printf("%d ", root->data);
-    }
-}
-
-int search(struct node *root, int x)
-{
-    if(root == NULL)
-        return 0;
-
-    if(root->data == x)
-        return 1;
-
-    if(x < root->data)
-        return search(root->left, x);
-
-    return search(root->right, x);
-}
-
 int main()
 {
     struct node *root = NULL;
-    int n, x, i, key;
+    int n, x, key, i;
 
     printf("Enter number of nodes: ");
     scanf("%d", &n);
@@ -84,23 +94,17 @@ int main()
         root = insert(root, x);
     }
 
-    printf("Inorder: ");
+    printf("Before deletion: ");
     inorder(root);
 
-    printf("\nPreorder: ");
-    preorder(root);
-
-    printf("\nPostorder: ");
-    postorder(root);
-
-    printf("\nEnter value to search: ");
+    printf("\nEnter value to delete: ");
     scanf("%d", &key);
 
-    if(search(root, key))
-        printf("Value found\n");
-    else
-        printf("Value not found\n");
+    root = deleteNode(root, key);
+
+    printf("After deletion: ");
+    inorder(root);
 
     return 0;
 }
-<img width="333" height="350" alt="Image" src="https://github.com/user-attachments/assets/73916342-290d-4cbd-acd3-82917793c4f3" />
+<img width="392" height="343" alt="Screenshot 2026-09-28 180451" src="https://github.com/user-attachments/assets/5d114b51-84cd-4cf7-b405-c5edc5a2e6a6" />
