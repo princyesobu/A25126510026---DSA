@@ -137,6 +137,5 @@ int main()
 
     return 0;
 }
-
-<img width="410" height="535" alt="Image" src="https://github.com/user-attachments/assets/93a9afa6-59df-4265-8431-210cfe6070b1" />
+<img width="490" height="607" alt="Screenshot 2026-09-28 171931" src="https://github.com/user-attachments/assets/2a7fb727-a48c-4e87-8103-ebf693c8e26f" />
 <img width="410" height="535" alt="Image" src="https://github.com/user-attachments/assets/25137552-5470-43ea-8103-ea134ef77a82" />
