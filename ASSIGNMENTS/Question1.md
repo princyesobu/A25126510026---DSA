@@ -43,3 +43,8 @@ int main()
 
     return 0;
 }
+
+
+
+
+<img width="346" height="287" alt="Image" src="https://github.com/user-attachments/assets/673dc355-a1b5-4731-a6fc-6b49d49afad6" />
